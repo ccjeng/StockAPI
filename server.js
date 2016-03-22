@@ -1,10 +1,10 @@
-//var compression = require('compression')
+var compression = require('compression')
 var express = require('express');
 var request = require('request');
 
 var app = express();
 
-//app.use(compression());
+app.use(compression());
 
 app.get('/q/:symbols', function (req, res) {
    
