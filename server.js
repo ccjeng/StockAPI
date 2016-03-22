@@ -17,23 +17,19 @@ app.get('/q/:symbols', function (req, res) {
 	     	res.end( 'error' );
 	     }
 	});
-
-
 })
 
 
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080  
+  , ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
- 
-app.listen(server_port, server_ip_address, function () {
-  console.log( "Listening on " + server_ip_address + ", server_port " + port )
-});
+app.listen(port, ip);
+
 
 // Launch server
 /*
 var port = process.env.PORT || 8080;
-//    , ip = process.env.IP || "127.0.0.1";
+    , ip = process.env.IP || "127.0.0.1";
 
 app.listen(port, function() {
   console.log("Listening on " + port);
