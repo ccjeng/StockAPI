@@ -1,9 +1,12 @@
+var compression = require('compression')
 var express = require('express');
 var request = require('request');
 
-var server = express();
+var app = express();
 
-server.get('/q/:symbols', function (req, res) {
+app.use(compression());
+
+app.get('/q/:symbols', function (req, res) {
    
 	var quoteUrl = 'http://www.google.com/finance/info?infotype=infoquoteall&q=' + req.params.symbols;
    
@@ -18,7 +21,9 @@ server.get('/q/:symbols', function (req, res) {
 
 })
 
+
 /*
+
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
  
@@ -31,6 +36,6 @@ server.listen(server_port, server_ip_address, function () {
 var port = process.env.PORT || 8080;
 //    , ip = process.env.IP || "127.0.0.1";
 
-server.listen(port, function() {
+app.listen(port, function() {
   console.log("Listening on " + port);
 });
